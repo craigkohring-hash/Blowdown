@@ -126,7 +126,10 @@
       font-weight: 700;
       cursor: pointer;
       text-decoration: none;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       transition: transform 0.08s ease, opacity 0.2s ease, background 0.2s ease;
     }
 
@@ -270,8 +273,8 @@
       </p>
 
       <div class="actions">
-        <a class="btn btn-primary" id="openMapBtn" href="#">Open trail map</a>
-        <a class="btn btn-secondary" id="openSurveyBtn" href="#">Submit a Issue Report Here</a>
+        <a class="btn btn-primary" id="openMapBtn" href="#">🗺️ View Map</a>
+        <a class="btn btn-secondary" id="openSurveyBtn" href="#">📸 Report a Trail Issue</a>
       </div>
 
       <div class="helper">
@@ -367,13 +370,14 @@
       }
     });
   </script>
-    <script>
-  if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-      navigator.serviceWorker.register("/service-worker.js")
-        .catch(err => console.error("Service worker registration failed:", err));
-    });
-  }
-</script>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("/service-worker.js")
+          .catch(err => console.error("Service worker registration failed:", err));
+      });
+    }
+  </script>
 </body>
 </html>
