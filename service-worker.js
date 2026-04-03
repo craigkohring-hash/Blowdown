@@ -13,39 +13,43 @@ const ASSETS_TO_CACHE = [
   "/icons/icon-512-maskable.png"
 ];
 
-self.addEventListener("install", event => {
+self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS_TO_CACHE))
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(ASSETS_TO_CACHE);
+    })
   );
   self.skipWaiting();
 });
 
-self.addEventListener("activate", event => {
+self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then(keys =>
+    caches.keys().then((keys) =>
       Promise.all(
         keys
-          .filter(key => key !== CACHE_NAME)
-          .map(key => caches.delete(key))
+          .filter((key) => key !== CACHE_NAME)
+          .map((key) => caches.delete(key))
       )
     )
   );
   self.clients.claim();
 });
 
-self.addEventListener("fetch", event => {
+self.addEventListener("fetch", (event) => {
   const request = event.request;
 
-  // For full page navigations: try network, fall back to offline page
   if (request.mode === "navigate") {
     event.respondWith(
-      fetch(request).catch(() => caches.match(OFFLINE_URL))
+      fetch(request)
+        .then((response) => response)
+        .catch(() => caches.match(OFFLINE_URL))
     );
     return;
   }
 
-  // For static assets: cache-first
   event.respondWith(
-    caches.match(request).then(cached => cached || fetch(request))
+    caches.match(request).then((cachedResponse) => {
+      return cachedResponse || fetch(request);
+    })
   );
 });
