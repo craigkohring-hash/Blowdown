@@ -1,1 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blowdown – Offline</title>
+  <meta name="theme-color" content="#1f4d3a">
+  <style>
+    :root {
+      --bg: #f4f1e8;
+      --card: #ffffff;
+      --text: #173228;
+      --muted: #5a6c63;
+      --accent: #1f4d3a;
+      --accent-2: #2f6b52;
+      --border: #d7d2c7;
+      --shadow: 0 10px 30px rgba(0,0,0,0.12);
+    }
 
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(180deg, #eef4ee 0%, var(--bg) 100%);
+      color: var(--text);
+    }
+
+    .card {
+      width: 100%;
+      max-width: 460px;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid #ece8df;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 28px 22px;
+      text-align: center;
+    }
+
+    .icon {
+      width: 74px;
+      height: 74px;
+      margin: 0 auto 16px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, #2f6b52 0%, #1f4d3a 100%);
+      color: white;
+      font-size: 32px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 30px;
+      line-height: 1.05;
+    }
+
+    p {
+      color: var(--muted);
+      line-height: 1.5;
+      margin: 0 0 14px;
+    }
+
+    .panel {
+      text-align: left;
+      background: #faf8f3;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      margin: 18px 0;
+    }
+
+    .panel strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-block;
+      width: 100%;
+      text-decoration: none;
+      border-radius: 14px;
+      padding: 15px 18px;
+      font-size: 16px;
+      font-weight: 700;
+      margin-top: 10px;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-secondary {
+      background: #f1efe9;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .small {
+      font-size: 13px;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="icon">📴</div>
+    <h1>You’re offline</h1>
+    <p>
+      Blowdown can’t open the live map or browser report form without service.
+    </p>
+
+    <div class="panel">
+      <strong>Continue logging issues in offline mode</strong>
+      Use the <strong>Survey123 field app</strong> if it is already installed on your phone.
+      Reports can be completed offline and uploaded once you’re back in service.
+    </div>
+
+    <a class="btn btn-primary" href="arcgis-survey123://">
+      Open Survey123 app
+    </a>
+
+    <a class="btn btn-secondary" href="/">
+      Try Blowdown again
+    </a>
+
+    <p class="small">
+      Tip: if you have no service and the app link does not open, take a geotagged photo now and submit once connected again.
+    </p>
+  </main>
+</body>
+</html>
